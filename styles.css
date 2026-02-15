@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body { 
     font-family: 'Inter', sans-serif; 
     background: #F8FAFC; 
@@ -247,10 +246,10 @@ body {
 .toggle-switch.active::after {
     left: 1.625rem;
 }
-=======
-body { 
-    font-family: 'Inter', sans-serif; 
-    background: #F8FAFC; 
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #F8FAFC;
 }
 
 .glass-card {
@@ -496,4 +495,3 @@ body {
 .toggle-switch.active::after {
     left: 1.625rem;
 }
->>>>>>> 455e9aa (added the settings and logout feature)
