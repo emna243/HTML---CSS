@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -452,3 +453,510 @@
     </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management - StudyFlow Professor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="professor.html" class="flex-shrink-0 flex items-center gap-2">
+                        <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-slate-900 tracking-tight">StudyFlow</span>
+                    </a>
+                    <div class="hidden md:ml-8 md:flex md:space-x-6">
+                        <a href="professor.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Dashboard</a>
+                        <a href="professor-schedule.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Schedule</a>
+                        <a href="professor-attendance.html" class="text-purple-600 font-medium border-b-2 border-purple-600 px-1 pt-1">Attendance</a>
+                        <a href="professor-grades.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Grades</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="p-2 text-slate-400 hover:text-slate-600 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-3 relative group">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-medium text-slate-900">Dr. Michael Chen</p>
+                            <p class="text-xs text-slate-500">Computer Science</p>
+                        </div>
+                        <button onclick="toggleProfileMenu()" class="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg hover:shadow-xl transition-shadow">
+                            MC
+                        </button>
+
+                        <!-- Profile Dropdown Menu -->
+                        <div id="profileMenu" class="hidden absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 z-50">
+                            <div class="p-4 border-b border-slate-200">
+                                <p class="font-semibold text-slate-900">Dr. Michael Chen</p>
+                                <p class="text-xs text-slate-500">professor@studyflow.edu</p>
+                            </div>
+                            <div class="py-2">
+                                <button onclick="openProfileSettings()" class="w-full text-left px-4 py-2 hover:bg-slate-50 transition-colors flex items-center gap-2 text-slate-700">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    Profile Settings
+                                </button>
+                                <button onclick="handleLogout()" class="w-full text-left px-4 py-2 hover:bg-red-50 transition-colors flex items-center gap-2 text-red-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                    </svg>
+                                    Logout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Header -->
+        <div class="mb-8 fade-in">
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">Mark Attendance</h1>
+            <p class="text-slate-600">Scan QR codes or manually mark student attendance</p>
+        </div>
+
+        <!-- Select Class -->
+        <div class="mb-8 fade-in" style="animation-delay: 0.1s">
+            <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                <label class="block text-sm font-medium text-slate-700 mb-3">Select Class</label>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <button onclick="selectClass(this, 'Data Structures & Algorithms')" class="p-4 border-2 border-slate-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all text-left group">
+                        <p class="font-semibold text-slate-900 group-hover:text-purple-600">Data Structures & Algorithms</p>
+                        <p class="text-sm text-slate-500">Room 201 • 34 Students</p>
+                        <p class="text-xs text-slate-400 mt-1">10:00 - 11:30</p>
+                    </button>
+                    <button onclick="selectClass(this, 'Database Design')" class="p-4 border-2 border-slate-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all text-left group">
+                        <p class="font-semibold text-slate-900 group-hover:text-purple-600">Database Design</p>
+                        <p class="text-sm text-slate-500">Room 305 • 28 Students</p>
+                        <p class="text-xs text-slate-400 mt-1">13:00 - 14:30</p>
+                    </button>
+                    <button onclick="selectClass(this, 'Web Development Workshop')" class="p-4 border-2 border-slate-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all text-left group">
+                        <p class="font-semibold text-slate-900 group-hover:text-purple-600">Web Development Workshop</p>
+                        <p class="text-sm text-slate-500">Lab 402 • 22 Students</p>
+                        <p class="text-xs text-slate-400 mt-1">15:30 - 17:00</p>
+                    </button>
+                    <button onclick="selectClass(this, 'Advanced Algorithms')" class="p-4 border-2 border-slate-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all text-left group">
+                        <p class="font-semibold text-slate-900 group-hover:text-purple-600">Advanced Algorithms</p>
+                        <p class="text-sm text-slate-500">Room 410 • 18 Students</p>
+                        <p class="text-xs text-slate-400 mt-1">09:00 - 10:30</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 fade-in" style="animation-delay: 0.2s">
+            
+            <!-- QR Code Generator -->
+            <div class="lg:col-span-1">
+                <div class="glass-card rounded-2xl p-6 border border-slate-200 sticky top-24">
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">Session QR Code</h2>
+                    
+                    <!-- QR Code Display -->
+                    <div class="mb-6 p-4 bg-white rounded-lg border-2 border-dashed border-slate-300 flex items-center justify-center" id="qrCodeContainer">
+                        <div class="text-center">
+                            <svg class="w-12 h-12 mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            <p class="text-sm text-slate-500">Select a class to generate QR code</p>
+                        </div>
+                    </div>
+
+                    <!-- Session Info -->
+                    <div class="mb-6 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                        <p class="text-xs font-semibold text-purple-700 uppercase mb-2">Current Session</p>
+                        <p class="text-lg font-bold text-slate-900" id="sessionClass">No class selected</p>
+                        <p class="text-xs text-slate-600 mt-2">Session expires in: <span id="sessionTimer" class="font-semibold text-purple-600">30:00</span></p>
+                        <p class="text-xs text-slate-500 mt-1">Students can scan this QR code to mark attendance</p>
+                    </div>
+
+                    <!-- Generate QR Button -->
+                    <button onclick="generateSessionQR()" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium mb-2">
+                        Generate New QR Code
+                    </button>
+
+                    <!-- Scanned Students Live Counter -->
+                    <div class="mt-6 pt-6 border-t border-slate-200">
+                        <p class="text-sm font-medium text-slate-700 mb-3">Attendance This Session</p>
+                        <div class="text-3xl font-bold text-purple-600 mb-2" id="scannedCount">0</div>
+                        <div class="flex gap-2 text-xs">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded">Present: <span id="presentCount">0</span></span>
+                            <span class="px-2 py-1 bg-amber-100 text-amber-700 rounded">Pending: <span id="pendingCount">0</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance List -->
+            <div class="lg:col-span-2">
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-slate-900">Student Attendance List</h2>
+                        <div class="flex gap-2">
+                            <button onclick="filterAttendance('all')" class="px-3 py-1 text-sm font-medium rounded-lg bg-slate-200 text-slate-900 hover:bg-slate-300 transition-colors" id="filterAll">All</button>
+                            <button onclick="filterAttendance('present')" class="px-3 py-1 text-sm font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" id="filterPresent">Present</button>
+                            <button onclick="filterAttendance('absent')" class="px-3 py-1 text-sm font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" id="filterAbsent">Absent</button>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="mb-6">
+                        <input type="text" placeholder="Search student name or ID..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-purple-500 transition-colors" oninput="filterStudents(this.value)">
+                    </div>
+
+                    <!-- Students Table -->
+                    <div class="space-y-2" id="studentsList">
+                        <!-- Student 1 -->
+                        <div class="student-row group">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-sm">JD</div>
+                                <div>
+                                    <p class="font-medium text-slate-900">John Doe</p>
+                                    <p class="text-xs text-slate-500">ID: 2024001</p>
+                                </div>
+                            </div>
+                            <button onclick="toggleAttendanceStatus(this)" class="attendance-badge present px-4 py-2 rounded-lg text-sm font-medium transition-all">
+                                Present
+                            </button>
+                        </div>
+
+                        <!-- Student 2 -->
+                        <div class="student-row group">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold text-sm">SD</div>
+                                <div>
+                                    <p class="font-medium text-slate-900">Sarah Davis</p>
+                                    <p class="text-xs text-slate-500">ID: 2024002</p>
+                                </div>
+                            </div>
+                            <button onclick="toggleAttendanceStatus(this)" class="attendance-badge absent px-4 py-2 rounded-lg text-sm font-medium transition-all">
+                                Absent
+                            </button>
+                        </div>
+
+                        <!-- Student 3 -->
+                        <div class="student-row group">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-sm">MC</div>
+                                <div>
+                                    <p class="font-medium text-slate-900">Michael Chen</p>
+                                    <p class="text-xs text-slate-500">ID: 2024003</p>
+                                </div>
+                            </div>
+                            <button onclick="toggleAttendanceStatus(this)" class="attendance-badge present px-4 py-2 rounded-lg text-sm font-medium transition-all">
+                                Present
+                            </button>
+                        </div>
+
+                        <!-- Student 4 -->
+                        <div class="student-row group">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 font-bold text-sm">EM</div>
+                                <div>
+                                    <p class="font-medium text-slate-900">Emma Martinez</p>
+                                    <p class="text-xs text-slate-500">ID: 2024004</p>
+                                </div>
+                            </div>
+                            <button onclick="toggleAttendanceStatus(this)" class="attendance-badge absent px-4 py-2 rounded-lg text-sm font-medium transition-all">
+                                Absent
+                            </button>
+                        </div>
+
+                        <!-- Student 5 -->
+                        <div class="student-row group">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 font-bold text-sm">LW</div>
+                                <div>
+                                    <p class="font-medium text-slate-900">Lucas Wilson</p>
+                                    <p class="text-xs text-slate-500">ID: 2024005</p>
+                                </div>
+                            </div>
+                            <button onclick="toggleAttendanceStatus(this)" class="attendance-badge present px-4 py-2 rounded-lg text-sm font-medium transition-all">
+                                Present
+                            </button>
+                        </div>
+
+                        <!-- Student 6 -->
+                        <div class="student-row group">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold text-sm">OH</div>
+                                <div>
+                                    <p class="font-medium text-slate-900">Olivia Harris</p>
+                                    <p class="text-xs text-slate-500">ID: 2024006</p>
+                                </div>
+                            </div>
+                            <button onclick="toggleAttendanceStatus(this)" class="attendance-badge present px-4 py-2 rounded-lg text-sm font-medium transition-all">
+                                Present
+                            </button>
+                        </div>
+
+                        <!-- Student 7 -->
+                        <div class="student-row group">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-10 h-10 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-600 font-bold text-sm">NA</div>
+                                <div>
+                                    <p class="font-medium text-slate-900">Noah Anderson</p>
+                                    <p class="text-xs text-slate-500">ID: 2024007</p>
+                                </div>
+                            </div>
+                            <button onclick="toggleAttendanceStatus(this)" class="attendance-badge absent px-4 py-2 rounded-lg text-sm font-medium transition-all">
+                                Absent
+                            </button>
+                        </div>
+
+                        <!-- Student 8 -->
+                        <div class="student-row group">
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-10 h-10 bg-fuchsia-100 rounded-full flex items-center justify-center text-fuchsia-600 font-bold text-sm">AJ</div>
+                                <div>
+                                    <p class="font-medium text-slate-900">Ava Johnson</p>
+                                    <p class="text-xs text-slate-500">ID: 2024008</p>
+                                </div>
+                            </div>
+                            <button onclick="toggleAttendanceStatus(this)" class="attendance-badge present px-4 py-2 rounded-lg text-sm font-medium transition-all">
+                                Present
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Summary Stats -->
+                    <div class="mt-8 pt-6 border-t border-slate-200">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-green-600" id="presentTotal">6</p>
+                                <p class="text-sm text-slate-600">Present</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-red-600" id="absentTotal">2</p>
+                                <p class="text-sm text-slate-600">Absent</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-purple-600" id="attendancePercentage">75%</p>
+                                <p class="text-sm text-slate-600">Attendance Rate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <button class="w-full mt-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                        Save Attendance ✓
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentClass = null;
+
+        function selectClass(btn, className) {
+            document.querySelectorAll('[onclick^="selectClass"]').forEach(b => {
+                b.classList.remove('border-purple-500', 'bg-purple-50');
+                b.classList.add('border-slate-200');
+            });
+            btn.classList.remove('border-slate-200');
+            btn.classList.add('border-purple-500', 'bg-purple-50');
+            currentClass = className;
+            
+            // Automatically generate QR code when class is selected
+            generateSessionQR();
+        }
+
+        function toggleAttendanceStatus(button) {
+            if (button.classList.contains('present')) {
+                button.classList.remove('present');
+                button.classList.add('absent');
+                button.textContent = 'Absent';
+            } else {
+                button.classList.remove('absent');
+                button.classList.add('present');
+                button.textContent = 'Present';
+            }
+            updateStats();
+        }
+
+        function updateStats() {
+            const presentCount = document.querySelectorAll('.attendance-badge.present').length;
+            const absentCount = document.querySelectorAll('.attendance-badge.absent').length;
+            const total = presentCount + absentCount;
+            const percentage = total > 0 ? Math.round((presentCount / total) * 100) : 0;
+
+            document.getElementById('presentTotal').textContent = presentCount;
+            document.getElementById('absentTotal').textContent = absentCount;
+            document.getElementById('attendancePercentage').textContent = percentage + '%';
+        }
+
+        function filterAttendance(type) {
+            document.querySelectorAll('[id^="filter"]').forEach(btn => {
+                btn.classList.remove('bg-slate-200', 'text-slate-900');
+                btn.classList.add('text-slate-600');
+            });
+
+            if (type === 'all') {
+                document.getElementById('filterAll').classList.add('bg-slate-200', 'text-slate-900');
+                document.querySelectorAll('.student-row').forEach(row => {
+                    row.style.display = 'flex';
+                });
+            } else if (type === 'present') {
+                document.getElementById('filterPresent').classList.add('bg-slate-200', 'text-slate-900');
+                document.querySelectorAll('.student-row').forEach(row => {
+                    const isPresent = row.querySelector('.attendance-badge').classList.contains('present');
+                    row.style.display = isPresent ? 'flex' : 'none';
+                });
+            } else if (type === 'absent') {
+                document.getElementById('filterAbsent').classList.add('bg-slate-200', 'text-slate-900');
+                document.querySelectorAll('.student-row').forEach(row => {
+                    const isAbsent = row.querySelector('.attendance-badge').classList.contains('absent');
+                    row.style.display = isAbsent ? 'flex' : 'none';
+                });
+            }
+        }
+
+        function filterStudents(searchText) {
+            const rows = document.querySelectorAll('.student-row');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchText.toLowerCase()) ? 'flex' : 'none';
+            });
+        }
+
+        // QR Code Generation System
+        let currentQRCode = null;
+        let sessionTimer = null;
+        let sessionEndTime = null;
+        let currentSessionId = null;
+
+        function generateSessionQR() {
+            if (!currentClass) {
+                alert('Please select a class first');
+                return;
+            }
+
+            // Generate unique session ID (timestamp + random)
+            const timestamp = Date.now();
+            const random = Math.floor(Math.random() * 1000);
+            currentSessionId = `${timestamp}-${random}`;
+
+            // Create QR code data with class info and session ID
+            const qrData = `${currentClass}|${currentSessionId}|${new Date().toLocaleTimeString()}`;
+
+            // Clear previous QR code if exists
+            const container = document.getElementById('qrCodeContainer');
+            container.innerHTML = '';
+
+            // Generate new QR code
+            currentQRCode = new QRCode(container, {
+                text: qrData,
+                width: 200,
+                height: 200,
+                colorDark: '#1e293b',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Update session info display
+            document.getElementById('sessionClass').textContent = currentClass;
+
+            // Set 30-minute session timer
+            const now = new Date();
+            sessionEndTime = new Date(now.getTime() + 30 * 60 * 1000);
+
+            // Clear existing timer if any
+            if (sessionTimer) clearInterval(sessionTimer);
+
+            // Start countdown timer
+            updateSessionTimer();
+            sessionTimer = setInterval(updateSessionTimer, 1000);
+
+            // Reset student counts for new session
+            document.getElementById('scannedCount').textContent = '0';
+            document.getElementById('presentCount').textContent = '0';
+            document.getElementById('pendingCount').textContent = '0';
+        }
+
+        function updateSessionTimer() {
+            const now = new Date();
+            const timeLeft = sessionEndTime - now;
+
+            if (timeLeft <= 0) {
+                clearInterval(sessionTimer);
+                document.getElementById('sessionTimer').textContent = '00:00';
+                document.getElementById('sessionTimer').classList.add('text-red-600');
+                document.getElementById('sessionClass').textContent = 'Session Expired';
+                return;
+            }
+
+            const minutes = Math.floor(timeLeft / 60000);
+            const seconds = Math.floor((timeLeft % 60000) / 1000);
+
+            const displayTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            document.getElementById('sessionTimer').textContent = displayTime;
+
+            // Change color when less than 5 minutes
+            const timerEl = document.getElementById('sessionTimer');
+            if (minutes < 5) {
+                timerEl.classList.remove('text-purple-600');
+                timerEl.classList.add('text-orange-600');
+            } else {
+                timerEl.classList.remove('text-orange-600');
+                timerEl.classList.add('text-purple-600');
+            }
+        }
+
+        // Initialize stats on page load
+        window.addEventListener('load', updateStats);
+
+        // Profile menu functionality
+        function toggleProfileMenu() {
+            const menu = document.getElementById('profileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Close profile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const profileMenu = document.getElementById('profileMenu');
+            const profileBtn = event.target.closest('button[onclick="toggleProfileMenu()"]');
+            if (profileMenu && !profileMenu.contains(event.target) && !profileBtn) {
+                profileMenu.classList.add('hidden');
+            }
+        });
+
+        function openProfileSettings() {
+            document.getElementById('profileMenu').classList.add('hidden');
+            alert('Opening Profile Settings...\n\nThis feature would navigate to a dedicated settings page where you can:\n- Update personal information\n- Change password\n- Update profile picture\n- Manage notifications\n- Department settings');
+        }
+
+        function handleLogout() {
+            document.getElementById('profileMenu').classList.add('hidden');
+            if (confirm('Are you sure you want to logout?')) {
+                alert('Logging out...');
+                window.location.href = 'professor-attendance.html';
+            }
+        }
+    </script>
+</body>
+</html>
+>>>>>>> 455e9aa (added the settings and logout feature)

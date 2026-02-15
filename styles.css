@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body { 
     font-family: 'Inter', sans-serif; 
     background: #F8FAFC; 
@@ -246,3 +247,253 @@ body {
 .toggle-switch.active::after {
     left: 1.625rem;
 }
+=======
+body { 
+    font-family: 'Inter', sans-serif; 
+    background: #F8FAFC; 
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.course-card {
+    transition: all 0.3s ease;
+}
+
+.course-card:hover {
+    border-color: #3B82F6;
+    background: linear-gradient(135deg, #ffffff 0%, #EFF6FF 100%);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.attendance-badge {
+    transition: all 0.3s ease;
+}
+
+.attendance-badge.present {
+    background: #DCFCE7;
+    color: #166534;
+}
+
+.attendance-badge.absent {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+.qr-scanner-container {
+    border: 2px dashed #3B82F6;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+}
+
+.grade-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.grade-input:focus {
+    outline: none;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.subject-tab {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.subject-tab:hover {
+    background: #F1F5F9;
+}
+
+.subject-tab.active {
+    border-bottom-color: #3B82F6;
+    color: #3B82F6;
+}
+
+.class-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.class-badge.live {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+.class-badge.upcoming {
+    background: #E0E7FF;
+    color: #3730A3;
+}
+
+.class-badge.completed {
+    background: #DCFCE7;
+    color: #166534;
+}
+
+.student-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #E2E8F0;
+    transition: background 0.3s ease;
+}
+
+.student-row:hover {
+    background: #F8FAFC;
+}
+
+.student-row:last-child {
+    border-bottom: none;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #64748B;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #1E293B;
+}
+
+.progress-ring {
+    transition: stroke-dashoffset 0.5s ease;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.success-pulse {
+    animation: successPulse 2s infinite;
+}
+
+@keyframes successPulse {
+    0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); 
+    }
+    50% { 
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); 
+    }
+}
+
+.toggle-switch {
+    display: inline-block;
+    width: 3rem;
+    height: 1.5rem;
+    background: #CBD5E1;
+    border-radius: 999px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.toggle-switch.active {
+    background: #22C55E;
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: white;
+    border-radius: 50%;
+    top: 0.125rem;
+    left: 0.125rem;
+    transition: left 0.3s ease;
+}
+
+.toggle-switch.active::after {
+    left: 1.625rem;
+}
+>>>>>>> 455e9aa (added the settings and logout feature)
