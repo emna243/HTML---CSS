@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyFlow - Educational Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-slate-900 tracking-tight">StudyFlow</span>
+                    </div>
+                    <div class="hidden md:ml-8 md:flex md:space-x-6">
+                        <a href="#" class="text-blue-600 font-medium border-b-2 border-blue-600 px-1 pt-1">Dashboard</a>
+                        <a href="schedule.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Schedule</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleNotifications()" class="p-2 text-slate-400 hover:text-slate-600 transition-colors relative group">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                        <span class="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div class="flex items-center gap-3">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-medium text-slate-900">Alex Johnson</p>
+                            <p class="text-xs text-slate-500">Student</p>
+                        </div>
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                            AJ
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Welcome Section -->
+        <div class="mb-8 fade-in">
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">Welcome back, Alex! 👋</h1>
+            <p class="text-slate-600">You've completed <span class="text-green-600 font-semibold">85%</span> of your weekly goals. Keep it up!</p>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 fade-in" style="animation-delay: 0.2s">
+            
+            <!-- Active Courses -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-slate-900">Active Courses</h2>
+                    <button class="text-blue-600 font-medium text-sm hover:text-blue-700 transition-colors">View all →</button>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Course Card 1 -->
+                    <div class="glass-card rounded-2xl p-6 course-card border border-slate-200 cursor-pointer">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-lg">Introduction to Psychology</h3>
+                                    <p class="text-sm text-slate-500">Dr. Sarah Chen • 12 modules</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">In Progress</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-600">Progress</span>
+                                <span class="font-semibold text-slate-900">75%</span>
+                            </div>
+                            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-3/4 rounded-full transition-all duration-500"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-4 text-sm text-slate-500">
+                            <span class="flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                4h 30m left
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                3/4 assignments
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 2 -->
+                    <div class="glass-card rounded-2xl p-6 course-card border border-slate-200 cursor-pointer">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-lg">Data Science Fundamentals</h3>
+                                    <p class="text-sm text-slate-500">Prof. Michael Ross • 8 modules</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">Active</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-600">Progress</span>
+                                <span class="font-semibold text-slate-900">45%</span>
+                            </div>
+                            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 w-[45%] rounded-full transition-all duration-500"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-4 text-sm text-slate-500">
+                            <span class="flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                6h 15m left
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                2/5 assignments
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 3 -->
+                    <div class="glass-card rounded-2xl p-6 course-card border border-slate-200 cursor-pointer">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-lg">UX Design Principles</h3>
+                                    <p class="text-sm text-slate-500">Emma Wilson • 10 modules</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold">Not Started</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-600">Progress</span>
+                                <span class="font-semibold text-slate-900">0%</span>
+                            </div>
+                            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-slate-300 w-0 rounded-full transition-all duration-500"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-4 text-sm text-slate-500">
+                            <span class="flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                Starts tomorrow
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Today's Schedule -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        Today's Schedule
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-3 items-start p-3 rounded-xl bg-blue-50 border border-blue-100">
+                            <div class="flex flex-col items-center min-w-[3rem]">
+                                <span class="text-xs font-bold text-blue-600">10:00</span>
+                                <div class="w-0.5 h-8 bg-blue-200 my-1"></div>
+                                <span class="text-xs font-bold text-blue-600">11:30</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 text-sm">Live Psychology Lecture</h4>
+                                <p class="text-xs text-slate-500 mt-1">Dr. Sarah Chen • Zoom</p>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 mt-2">Live Now</span>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 items-start p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                            <div class="flex flex-col items-center min-w-[3rem]">
+                                <span class="text-xs font-bold text-slate-400">14:00</span>
+                                <div class="w-0.5 h-8 bg-slate-200 my-1"></div>
+                                <span class="text-xs font-bold text-slate-400">15:30</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 text-sm">Study Group: Data Science</h4>
+                                <p class="text-xs text-slate-500 mt-1">Library Room 302</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 items-start p-3 rounded-xl hover:bg-slate-50 transition-colors">
+                            <div class="flex flex-col items-center min-w-[3rem]">
+                                <span class="text-xs font-bold text-slate-400">16:00</span>
+                                <div class="w-0.5 h-8 bg-slate-200 my-1"></div>
+                                <span class="text-xs font-bold text-slate-400">17:00</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 text-sm">Assignment Due</h4>
+                                <p class="text-xs text-slate-500 mt-1">Psychology Essay</p>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800 mt-2">Due Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='schedule.html'" class="w-full mt-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                        View Full Schedule →
+                    </button>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <h3 class="font-bold text-slate-900 mb-4">Quick Actions</h3>
+                    <div class="space-y-2">
+                        <button onclick="openQRScanner()" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-slate-900 text-sm">Mark Attendance</p>
+                                <p class="text-xs text-slate-500">Scan QR Code</p>
+                            </div>
+                        </button>
+
+                        <button class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-slate-900 text-sm">Submit Assignment</p>
+                                <p class="text-xs text-slate-500">Due in 3 hours</p>
+                            </div>
+                        </button>
+
+                        <button class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
+                            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-slate-900 text-sm">Message Instructor</p>
+                                <p class="text-xs text-slate-500">2 unread replies</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Study Tips -->
+                <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-6 text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+                    <div class="relative z-10">
+                        <h3 class="font-bold mb-2 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Study Tip
+                        </h3>
+                        <p class="text-blue-100 text-sm leading-relaxed mb-4">
+                            Research shows that studying in 25-minute focused sessions (Pomodoro Technique) improves retention by 40%. Try it now!
+                        </p>
+                        <button class="w-full py-2 bg-white text-blue-700 rounded-lg font-semibold text-sm hover:bg-blue-50 transition-colors shadow-lg">
+                            Start Focus Timer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notifications Panel -->
+    <div id="notificationsPanel" class="hidden fixed top-16 right-4 w-96 glass-card rounded-2xl border border-slate-200 shadow-2xl z-40 max-h-96 overflow-y-auto fade-in">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold text-slate-900">Notifications</h3>
+                <button onclick="toggleNotifications()" class="text-slate-400 hover:text-slate-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="space-y-3">
+                <!-- New Grade Notification -->
+                <div class="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-slate-900">New Grade Posted</p>
+                            <p class="text-sm text-slate-600">Dr. Chen posted your Midterm grade: 92 (A)</p>
+                            <p class="text-xs text-slate-500 mt-1">Psychology 101 • 2 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attendance Warning Notification -->
+                <div class="p-3 bg-red-50 rounded-lg border border-red-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-slate-900">Attendance Warning</p>
+                            <p class="text-sm text-slate-600">3 absences recorded. Risk of academic elimination if continued.</p>
+                            <p class="text-xs text-slate-500 mt-1">Data Structures • 1 day ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professor Absent Notification -->
+                <div class="p-3 bg-amber-50 rounded-lg border border-amber-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-slate-900">Class Cancelled</p>
+                            <p class="text-sm text-slate-600">Prof. Michael Chen is absent. Web Dev session cancelled today.</p>
+                            <p class="text-xs text-slate-500 mt-1">Web Development • Today at 10:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Previous Notification -->
+                <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 opacity-70">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-slate-900">Assignment Submitted</p>
+                            <p class="text-sm text-slate-600">Psychology Essay submitted successfully</p>
+                            <p class="text-xs text-slate-500 mt-1">Psychology 101 • 3 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Scanner Modal -->
+    <div id="qrModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 fade-in">
+        <div class="glass-card rounded-2xl max-w-md w-full p-6 border border-slate-200 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-slate-900">Scan QR Code for Attendance</h3>
+                <button onclick="closeQRScanner()" class="text-slate-400 hover:text-slate-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="qrScannerContainer" class="mb-4 bg-slate-900 rounded-xl overflow-hidden border-2 border-dashed border-slate-600">
+                <video id="qrVideo" class="w-full" playsinline></video>
+            </div>
+            
+            <div id="qrResult" class="hidden mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p class="text-sm text-green-800 font-medium">✓ Attendance Marked Successfully</p>
+                <p class="text-xs text-green-600 mt-1"><span id="qrResultText"></span></p>
+            </div>
+            
+            <div id="qrError" class="hidden mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p class="text-sm text-red-800 font-medium">⚠ Unable to access camera</p>
+                <p class="text-xs text-red-600 mt-1">Please check camera permissions and try again.</p>
+            </div>
+            
+            <div id="qrProcessing" class="hidden mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <div class="flex items-center gap-3">
+                    <div class="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-sm text-blue-800 font-medium">Scanning for QR Code...</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-2">
+                <button onclick="startQRScanning()" id="startScanBtn" class="flex-1 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                    Start Camera
+                </button>
+                <button onclick="closeQRScanner()" class="flex-1 py-2 bg-slate-200 text-slate-900 rounded-lg font-semibold hover:bg-slate-300 transition-colors">
+                    Close
+                </button>
+            </div>
+            
+            <p class="text-xs text-slate-500 text-center mt-4">Hold your device steady and position the QR code in the center of the camera view.</p>
+        </div>
+    </div>
+
+    <script>
+        // Toggle notifications panel
+        function toggleNotifications() {
+            const panel = document.getElementById('notificationsPanel');
+            panel.classList.toggle('hidden');
+        }
+
+        // Close notifications when clicking outside
+        document.addEventListener('click', function(event) {
+            const panel = document.getElementById('notificationsPanel');
+            const notifBtn = event.target.closest('button[onclick*="toggleNotifications"]');
+            if (!panel.contains(event.target) && !notifBtn) {
+                panel.classList.add('hidden');
+            }
+        });
+
+        // QR Code Scanner
+        let videoStream = null;
+        let isScanning = false;
+
+        function openQRScanner() {
+            const modal = document.getElementById('qrModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            startQRScanning();
+        }
+
+        function closeQRScanner() {
+            const modal = document.getElementById('qrModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            stopQRScanning();
+            resetQRModal();
+        }
+
+        function resetQRModal() {
+            document.getElementById('qrResult').classList.add('hidden');
+            document.getElementById('qrError').classList.add('hidden');
+            document.getElementById('qrProcessing').classList.add('hidden');
+            document.getElementById('startScanBtn').classList.remove('hidden');
+        }
+
+        function startQRScanning() {
+            const video = document.getElementById('qrVideo');
+            const processingDiv = document.getElementById('qrProcessing');
+            const errorDiv = document.getElementById('qrError');
+            const startBtn = document.getElementById('startScanBtn');
+            
+            startBtn.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+            processingDiv.classList.remove('hidden');
+
+            navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: 'environment'
+                }
+            }).then(stream => {
+                videoStream = stream;
+                video.srcObject = stream;
+                video.play();
+                isScanning = true;
+                scanQRCode();
+            }).catch(error => {
+                console.error('Camera error:', error);
+                processingDiv.classList.add('hidden');
+                startBtn.classList.remove('hidden');
+                errorDiv.classList.remove('hidden');
+            });
+        }
+
+        function stopQRScanning() {
+            isScanning = false;
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+                videoStream = null;
+            }
+        }
+
+        function scanQRCode() {
+            const video = document.getElementById('qrVideo');
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            if (canvas.width === 0 || canvas.height === 0) {
+                if (isScanning) {
+                    requestAnimationFrame(scanQRCode);
+                }
+                return;
+            }
+
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+            if (code && code.data) {
+                handleQRDetected(code.data);
+            } else if (isScanning) {
+                requestAnimationFrame(scanQRCode);
+            }
+        }
+
+        function handleQRDetected(qrData) {
+            stopQRScanning();
+            const resultDiv = document.getElementById('qrResult');
+            const resultText = document.getElementById('qrResultText');
+            const processingDiv = document.getElementById('qrProcessing');
+            const startBtn = document.getElementById('startScanBtn');
+            const video = document.getElementById('qrVideo');
+            
+            // Parse QR code data and extract class info
+            const classInfo = qrData.split('|')[0] || 'Psychology 101';
+            const timestamp = new Date().toLocaleTimeString();
+            
+            processingDiv.classList.add('hidden');
+            resultDiv.classList.remove('hidden');
+            resultText.textContent = `Marked present in ${classInfo} at ${timestamp}`;
+            startBtn.textContent = 'Scan Another';
+            startBtn.classList.remove('hidden');
+            video.pause();
+            
+            // Auto-close after 2 seconds
+            setTimeout(() => {
+                closeQRScanner();
+            }, 2000);
+        }
+
+        // Interactive elements
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('qrModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQRScanner();
+            }
+        });
+    </script>
+</body>
+</html>
