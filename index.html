@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyFlow - Professor Dashboard</title>
+    <title>StudyFlow - Educational Management System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -16,854 +16,217 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center gap-2">
-                        <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                         </div>
                         <span class="text-xl font-bold text-slate-900 tracking-tight">StudyFlow</span>
-                        <span class="ml-2 px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">Professor</span>
-                    </div>
-                    <div class="hidden md:ml-8 md:flex md:space-x-6">
-                        <a href="professor.html" class="text-purple-600 font-medium border-b-2 border-purple-600 px-1 pt-1">Dashboard</a>
-                        <a href="professor-schedule.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Schedule</a>
-                        <a href="professor-attendance.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Attendance</a>
-                        <a href="professor-grades.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Grades</a>
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button onclick="toggleProfNotifications()" class="p-2 text-slate-400 hover:text-slate-600 transition-colors relative">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                        </svg>
-                        <span class="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full"></span>
-                    </button>
-                    <div class="flex items-center gap-3">
-                        <div class="text-right hidden sm:block">
-                            <p class="text-sm font-medium text-slate-900">Dr. Michael Chen</p>
-                            <p class="text-xs text-slate-500">Computer Science</p>
-                        </div>
-                        <div class="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg cursor-pointer hover:shadow-xl transition-shadow" onclick="toggleProfileMenu()" role="button">
-                            MC
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Profile Menu Dropdown -->
-        <div id="profileMenu" class="hidden fixed top-16 right-4 w-56 glass-card rounded-2xl border border-slate-200 shadow-2xl z-40 fade-in">
-            <div class="p-4">
-                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-200">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        MC
-                    </div>
-                    <div>
-                        <p class="font-semibold text-slate-900">Dr. Michael Chen</p>
-                        <p class="text-xs text-slate-500">Computer Science</p>
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <button onclick="openProfileSettings()" class="w-full flex items-center gap-3 px-4 py-2 text-left text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <span>Profile Settings</span>
-                    </button>
-                    <button onclick="handleLogout()" class="w-full flex items-center gap-3 px-4 py-2 text-left text-red-600 hover:bg-red-50 rounded-lg transition-colors">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                        </svg>
-                        <span>Logout</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-                    </div>
+                    <button onclick="scrollToSection('features')" class="text-slate-600 hover:text-slate-900 font-medium transition-colors">Features</button>
+                    <button onclick="scrollToSection('about')" class="text-slate-600 hover:text-slate-900 font-medium transition-colors">About</button>
+                    <a href="student.html" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">Student Login</a>
+                    <a href="professor.html" class="px-6 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors">Professor Login</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <!-- Welcome Section -->
-        <div class="mb-8 fade-in">
-            <h1 class="text-3xl font-bold text-slate-900 mb-2">Welcome back, Dr. Chen! 👋</h1>
-            <p class="text-slate-600">Manage your classes, attendance, and grades all in one place</p>
-        </div>
-
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 fade-in" style="animation-delay: 0.1s">
-            <!-- Total Students -->
-            <div class="glass-card rounded-2xl p-6 hover-lift">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <p class="text-sm font-medium text-slate-500 mb-1">Total Students</p>
-                        <p class="text-2xl font-bold text-slate-900">124</p>
-                    </div>
-                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 12H9m6 0a6 6 0 11-12 0 6 6 0 0112 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <p class="text-sm text-slate-600">Across <span class="font-semibold">4 classes</span></p>
-            </div>
-
-            <!-- Classes Today -->
-            <div class="glass-card rounded-2xl p-6 hover-lift">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <p class="text-sm font-medium text-slate-500 mb-1">Classes Today</p>
-                        <p class="text-2xl font-bold text-slate-900">3</p>
-                    </div>
-                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <p class="text-sm text-slate-600"><span class="text-purple-600 font-semibold">1 happening now</span></p>
-            </div>
-
-            <!-- Average Attendance -->
-            <div class="glass-card rounded-2xl p-6 hover-lift">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <p class="text-sm font-medium text-slate-500 mb-1">Avg Attendance</p>
-                        <p class="text-2xl font-bold text-slate-900">92%</p>
-                    </div>
-                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <p class="text-sm text-slate-600">All courses combined</p>
-            </div>
-
-            <!-- Pending Grades -->
-            <div class="glass-card rounded-2xl p-6 hover-lift">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <p class="text-sm font-medium text-slate-500 mb-1">Pending Grades</p>
-                        <p class="text-2xl font-bold text-slate-900">23</p>
-                    </div>
-                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <p class="text-sm text-slate-600"><span class="text-amber-600 font-semibold">Action needed</span></p>
-            </div>
-        </div>
-
-        <!-- Main Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 fade-in" style="animation-delay: 0.2s">
-            
-            <!-- Quick Access Cards -->
-            <div class="lg:col-span-2 space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Schedule Card -->
-                    <a href="professor-schedule.html" class="glass-card rounded-2xl p-6 border border-slate-200 hover-lift cursor-pointer">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">Feature</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Manage Schedule</h3>
-                        <p class="text-slate-600 text-sm mb-4">View and organize your weekly teaching schedule, office hours, and class timings</p>
-                        <div class="text-blue-600 font-semibold text-sm">3 classes today →</div>
-                    </a>
-
-                    <!-- Attendance Card -->
-                    <a href="professor-attendance.html" class="glass-card rounded-2xl p-6 border border-slate-200 hover-lift cursor-pointer">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Feature</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Mark Attendance</h3>
-                        <p class="text-slate-600 text-sm mb-4">Scan QR codes or manually mark student attendance with real-time tracking</p>
-                        <div class="text-green-600 font-semibold text-sm">92% attendance avg →</div>
-                    </a>
-
-                    <!-- Grades Card -->
-                    <a href="professor-grades.html" class="glass-card rounded-2xl p-6 border border-slate-200 hover-lift cursor-pointer md:col-span-2">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">Feature</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Manage Grades</h3>
-                        <p class="text-slate-600 text-sm mb-4">Add and manage student grades by subject and assessment type with bulk entry capabilities</p>
-                        <div class="text-purple-600 font-semibold text-sm">23 pending grades →</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right Section: Overview -->
-            <div class="space-y-6">
-                <!-- Class Statistics -->
-                <div class="glass-card rounded-2xl p-6 border border-slate-200">
-                    <h3 class="font-bold text-slate-900 mb-6">Overview</h3>
-                    <div class="space-y-4">
-                        <div class="p-3 bg-blue-50 rounded-lg">
-                            <p class="text-xs text-blue-600 font-medium uppercase">Classes Today</p>
-                            <p class="text-3xl font-bold text-blue-600 mt-1">3</p>
-                        </div>
-                        <div class="p-3 bg-green-50 rounded-lg">
-                            <p class="text-xs text-green-600 font-medium uppercase">Avg Attendance</p>
-                            <p class="text-3xl font-bold text-green-600 mt-1">92%</p>
-                        </div>
-                        <div class="p-3 bg-purple-50 rounded-lg">
-                            <p class="text-xs text-purple-600 font-medium uppercase">Pending Grades</p>
-                            <p class="text-3xl font-bold text-purple-600 mt-1">23</p>
-                        </div>
-                        <div class="p-3 bg-amber-50 rounded-lg">
-                            <p class="text-xs text-amber-600 font-medium uppercase">Total Students</p>
-                            <p class="text-3xl font-bold text-amber-600 mt-1">124</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="glass-card rounded-2xl p-6 border border-slate-200">
-                    <h3 class="font-bold text-slate-900 mb-4">Quick Actions</h3>
-                    <div class="space-y-2">
-                        <a href="professor-attendance.html" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
-                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-slate-900 text-sm">Mark Attendance</p>
-                                <p class="text-xs text-slate-500">Quick scan or entry</p>
-                            </div>
-                        </a>
-
-                        <a href="professor-grades.html" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
-                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-slate-900 text-sm">Add Grades</p>
-                                <p class="text-xs text-slate-500">23 assignments pending</p>
-                            </div>
-                        </a>
-
-                        <a href="professor-schedule.html" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
-                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-slate-900 text-sm">View Schedule</p>
-                                <p class="text-xs text-slate-500">Next class in 2h 45m</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Recent Activity -->
-                <div class="glass-card rounded-2xl p-6 border border-slate-200">
-                    <h3 class="font-bold text-slate-900 mb-4">Recent Activity</h3>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex gap-3">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                            <div>
-                                <p class="text-slate-900 font-medium">Grades submitted</p>
-                                <p class="text-slate-500">Assignment 5 - 2 hours ago</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-3">
-                            <div class="w-2 h-2 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                            <div>
-                                <p class="text-slate-900 font-medium">Attendance recorded</p>
-                                <p class="text-slate-500">DB Design - 5 hours ago</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-3">
-                            <div class="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                            <div>
-                                <p class="text-slate-900 font-medium">New submissions</p>
-                                <p class="text-slate-500">12 assignments - Yesterday</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Professor Notifications Panel -->
-    <div id="profNotificationsPanel" class="hidden fixed top-16 right-4 w-96 glass-card rounded-2xl border border-slate-200 shadow-2xl z-40 max-h-96 overflow-y-auto fade-in">
-        <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-bold text-slate-900">Notifications</h3>
-                <button onclick="toggleProfNotifications()" class="text-slate-400 hover:text-slate-600">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-
-            <div class="space-y-3">
-                <!-- Student Absent Alert -->
-                <div class="p-3 bg-red-50 rounded-lg border border-red-200">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600 flex-shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-slate-900">Student At Risk</p>
-                            <p class="text-sm text-slate-600">John Doe - 3 absences (Risk of elimination)</p>
-                            <p class="text-xs text-slate-500 mt-1">Data Structures • 2 hours ago</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- New Assignment Submission -->
-                <div class="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-slate-900">New Submissions</p>
-                            <p class="text-sm text-slate-600">12 students submitted Assignment 2</p>
-                            <p class="text-xs text-slate-500 mt-1">Database Design • 1 day ago</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Session QR Generated -->
-                <div class="p-3 bg-green-50 rounded-lg border border-green-200">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-slate-900">Session Started</p>
-                            <p class="text-sm text-slate-600">QR code generated for Data Structures class</p>
-                            <p class="text-xs text-slate-500 mt-1">Attendance • Today at 10:00 AM</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Low Attendance Alert -->
-                <div class="p-3 bg-amber-50 rounded-lg border border-amber-200">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 flex-shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-slate-900">Class Attendance Alert</p>
-                            <p class="text-sm text-slate-600">Web Dev attendance below 80% threshold</p>
-                            <p class="text-xs text-slate-500 mt-1">Web Development • Yesterday</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Professor Notifications Toggle
-        function toggleProfNotifications() {
-            const panel = document.getElementById('profNotificationsPanel');
-            panel.classList.toggle('hidden');
-        }
-
-        // Close notifications when clicking outside
-        document.addEventListener('click', function(event) {
-            const panel = document.getElementById('profNotificationsPanel');
-            const notifBtn = event.target.closest('button[onclick*="toggleProfNotifications"]');
-            if (!panel.contains(event.target) && !notifBtn) {
-                panel.classList.add('hidden');
-            }
-        });
-
-        // Profile menu functionality
-        function toggleProfileMenu() {
-            const menu = document.getElementById('profileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Close profile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const profileMenu = document.getElementById('profileMenu');
-            const profileBtn = event.target.closest('div[onclick="toggleProfileMenu()"]');
-            if (profileMenu && !profileMenu.contains(event.target) && !profileBtn) {
-                profileMenu.classList.add('hidden');
-            }
-        });
-
-        function openProfileSettings() {
-            document.getElementById('profileMenu').classList.add('hidden');
-            alert('Opening Profile Settings...\n\nThis feature would navigate to a dedicated settings page where you can:\n- Update personal information\n- Change password\n- Update profile picture\n- Manage notifications');
-        }
-
-        function handleLogout() {
-            document.getElementById('profileMenu').classList.add('hidden');
-            if (confirm('Are you sure you want to logout?')) {
-                alert('Logging out...');
-                window.location.href = 'professor.html';
-            }
-        }
-    </script>
-</body>
-</html>>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyFlow - Professor Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="text-slate-800 antialiased">
-
-    <!-- Navigation -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-purple-50 py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center gap-2">
-                        <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                            </svg>
-                        </div>
-                        <span class="text-xl font-bold text-slate-900 tracking-tight">StudyFlow</span>
-                        <span class="ml-2 px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">Professor</span>
-                    </div>
-                    <div class="hidden md:ml-8 md:flex md:space-x-6">
-                        <a href="professor.html" class="text-purple-600 font-medium border-b-2 border-purple-600 px-1 pt-1">Dashboard</a>
-                        <a href="professor-schedule.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Schedule</a>
-                        <a href="professor-attendance.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Attendance</a>
-                        <a href="professor-grades.html" class="text-slate-500 hover:text-slate-700 font-medium px-1 pt-1 transition-colors">Grades</a>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4">
-                    <button onclick="toggleProfNotifications()" class="p-2 text-slate-400 hover:text-slate-600 transition-colors relative">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                        </svg>
-                        <span class="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full"></span>
-                    </button>
-                    <div class="flex items-center gap-3 relative group">
-                        <div class="text-right hidden sm:block">
-                            <p class="text-sm font-medium text-slate-900">Dr. Michael Chen</p>
-                            <p class="text-xs text-slate-500">Computer Science</p>
-                        </div>
-                        <button onclick="toggleProfileMenu()" class="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg hover:shadow-xl transition-shadow">
-                            MC
-                        </button>
-
-                        <!-- Profile Dropdown Menu -->
-                        <div id="profileMenu" class="hidden absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 z-50">
-                            <div class="p-4 border-b border-slate-200">
-                                <p class="font-semibold text-slate-900">Dr. Michael Chen</p>
-                                <p class="text-xs text-slate-500">professor@studyflow.edu</p>
-                            </div>
-                            <div class="py-2">
-                                <button onclick="openProfileSettings()" class="w-full text-left px-4 py-2 hover:bg-slate-50 transition-colors flex items-center gap-2 text-slate-700">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                    Profile Settings
-                                </button>
-                                <button onclick="handleLogout()" class="w-full text-left px-4 py-2 hover:bg-red-50 transition-colors flex items-center gap-2 text-red-600">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                                    </svg>
-                                    Logout
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="text-center fade-in">
+                <h1 class="text-5xl font-bold text-slate-900 mb-6">Welcome to StudyFlow</h1>
+                <p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+                    A comprehensive educational management system designed to streamline learning and teaching experiences. Manage schedules, attendance, grades, and more in one unified platform.
+                </p>
+                <div class="flex items-center justify-center gap-4">
+                    <a href="student.html" class="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">Get Started as Student</a>
+                    <a href="professor.html" class="px-8 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors">Access as Professor</a>
                 </div>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <!-- Welcome Section -->
-        <div class="mb-8 fade-in">
-            <h1 class="text-3xl font-bold text-slate-900 mb-2">Welcome back, Dr. Chen! 👋</h1>
-            <p class="text-slate-600">Manage your classes, attendance, and grades all in one place</p>
-        </div>
-
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 fade-in" style="animation-delay: 0.1s">
-            <!-- Total Students -->
-            <div class="glass-card rounded-2xl p-6 hover-lift">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <p class="text-sm font-medium text-slate-500 mb-1">Total Students</p>
-                        <p class="text-2xl font-bold text-slate-900">124</p>
-                    </div>
-                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 12H9m6 0a6 6 0 11-12 0 6 6 0 0112 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <p class="text-sm text-slate-600">Across <span class="font-semibold">4 classes</span></p>
-            </div>
-
-            <!-- Classes Today -->
-            <div class="glass-card rounded-2xl p-6 hover-lift">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <p class="text-sm font-medium text-slate-500 mb-1">Classes Today</p>
-                        <p class="text-2xl font-bold text-slate-900">3</p>
-                    </div>
-                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600">
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Key Features</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Schedule Management</h3>
+                    <p class="text-slate-600">View and manage your daily schedules, classes, and academic commitments all in one place.</p>
                 </div>
-                <p class="text-sm text-slate-600"><span class="text-purple-600 font-semibold">1 happening now</span></p>
-            </div>
 
-            <!-- Average Attendance -->
-            <div class="glass-card rounded-2xl p-6 hover-lift">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <p class="text-sm font-medium text-slate-500 mb-1">Avg Attendance</p>
-                        <p class="text-2xl font-bold text-slate-900">92%</p>
-                    </div>
-                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
+                <!-- Feature 2 -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Attendance Tracking</h3>
+                    <p class="text-slate-600">QR code based attendance marking for quick and accurate class attendance records.</p>
                 </div>
-                <p class="text-sm text-slate-600">All courses combined</p>
-            </div>
 
-            <!-- Pending Grades -->
-            <div class="glass-card rounded-2xl p-6 hover-lift">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <p class="text-sm font-medium text-slate-500 mb-1">Pending Grades</p>
-                        <p class="text-2xl font-bold text-slate-900">23</p>
-                    </div>
-                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600">
+                <!-- Feature 3 -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                         </svg>
                     </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Grade Management</h3>
+                    <p class="text-slate-600">Track grades, submit assignments, and monitor academic progress in real-time.</p>
                 </div>
-                <p class="text-sm text-slate-600"><span class="text-amber-600 font-semibold">Action needed</span></p>
+
+                <!-- Feature 4 -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Notifications</h3>
+                    <p class="text-slate-600">Stay updated with real-time notifications about classes, grades, and important announcements.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">User Profile</h3>
+                    <p class="text-slate-600">Customize your profile settings and manage preferences with ease.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-card rounded-2xl p-6 border border-slate-200">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4v2m0 4v2m0-14a9 9 0 110 18 9 9 0 010-18z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Security</h3>
+                    <p class="text-slate-600">Secure authentication and data protection for all users and sensitive information.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Main Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 fade-in" style="animation-delay: 0.2s">
-            
-            <!-- Quick Access Cards -->
-            <div class="lg:col-span-2 space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Schedule Card -->
-                    <a href="professor-schedule.html" class="glass-card rounded-2xl p-6 border border-slate-200 hover-lift cursor-pointer">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">About StudyFlow</h2>
+                    <p class="text-lg text-slate-600 mb-4">
+                        StudyFlow is a comprehensive educational management system designed to bridge the gap between students and professors. Our platform streamlines academic processes and enhances communication.
+                    </p>
+                    <p class="text-lg text-slate-600 mb-4">
+                        With features like real-time scheduling, attendance tracking, and grade management, StudyFlow makes academic life easier and more organized for everyone.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">Feature</span>
+                            <span class="text-slate-700">Easy to use interface</span>
                         </div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Manage Schedule</h3>
-                        <p class="text-slate-600 text-sm mb-4">View and organize your weekly teaching schedule, office hours, and class timings</p>
-                        <div class="text-blue-600 font-semibold text-sm">3 classes today →</div>
-                    </a>
-
-                    <!-- Attendance Card -->
-                    <a href="professor-attendance.html" class="glass-card rounded-2xl p-6 border border-slate-200 hover-lift cursor-pointer">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Feature</span>
+                            <span class="text-slate-700">Real-time notifications</span>
                         </div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Mark Attendance</h3>
-                        <p class="text-slate-600 text-sm mb-4">Scan QR codes or manually mark student attendance with real-time tracking</p>
-                        <div class="text-green-600 font-semibold text-sm">92% attendance avg →</div>
-                    </a>
-
-                    <!-- Grades Card -->
-                    <a href="professor-grades.html" class="glass-card rounded-2xl p-6 border border-slate-200 hover-lift cursor-pointer md:col-span-2">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">Feature</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-2">Manage Grades</h3>
-                        <p class="text-slate-600 text-sm mb-4">Add and manage student grades by subject and assessment type with bulk entry capabilities</p>
-                        <div class="text-purple-600 font-semibold text-sm">23 pending grades →</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right Section: Overview -->
-            <div class="space-y-6">
-                <!-- Class Statistics -->
-                <div class="glass-card rounded-2xl p-6 border border-slate-200">
-                    <h3 class="font-bold text-slate-900 mb-6">Overview</h3>
-                    <div class="space-y-4">
-                        <div class="p-3 bg-blue-50 rounded-lg">
-                            <p class="text-xs text-blue-600 font-medium uppercase">Classes Today</p>
-                            <p class="text-3xl font-bold text-blue-600 mt-1">3</p>
-                        </div>
-                        <div class="p-3 bg-green-50 rounded-lg">
-                            <p class="text-xs text-green-600 font-medium uppercase">Avg Attendance</p>
-                            <p class="text-3xl font-bold text-green-600 mt-1">92%</p>
-                        </div>
-                        <div class="p-3 bg-purple-50 rounded-lg">
-                            <p class="text-xs text-purple-600 font-medium uppercase">Pending Grades</p>
-                            <p class="text-3xl font-bold text-purple-600 mt-1">23</p>
-                        </div>
-                        <div class="p-3 bg-amber-50 rounded-lg">
-                            <p class="text-xs text-amber-600 font-medium uppercase">Total Students</p>
-                            <p class="text-3xl font-bold text-amber-600 mt-1">124</p>
+                            <span class="text-slate-700">Secure and reliable</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Quick Actions -->
-                <div class="glass-card rounded-2xl p-6 border border-slate-200">
-                    <h3 class="font-bold text-slate-900 mb-4">Quick Actions</h3>
-                    <div class="space-y-2">
-                        <a href="professor-attendance.html" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
-                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-slate-900 text-sm">Mark Attendance</p>
-                                <p class="text-xs text-slate-500">Quick scan or entry</p>
-                            </div>
-                        </a>
-
-                        <a href="professor-grades.html" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
-                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-slate-900 text-sm">Add Grades</p>
-                                <p class="text-xs text-slate-500">23 assignments pending</p>
-                            </div>
-                        </a>
-
-                        <a href="professor-schedule.html" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors text-left group">
-                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-slate-900 text-sm">View Schedule</p>
-                                <p class="text-xs text-slate-500">Next class in 2h 45m</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Recent Activity -->
-                <div class="glass-card rounded-2xl p-6 border border-slate-200">
-                    <h3 class="font-bold text-slate-900 mb-4">Recent Activity</h3>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex gap-3">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                            <div>
-                                <p class="text-slate-900 font-medium">Grades submitted</p>
-                                <p class="text-slate-500">Assignment 5 - 2 hours ago</p>
-                            </div>
+                <div class="bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl p-8 text-white">
+                    <div class="space-y-6">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">500+</div>
+                            <p class="text-blue-100">Active Users</p>
                         </div>
-                        <div class="flex gap-3">
-                            <div class="w-2 h-2 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                            <div>
-                                <p class="text-slate-900 font-medium">Attendance recorded</p>
-                                <p class="text-slate-500">DB Design - 5 hours ago</p>
-                            </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">50+</div>
+                            <p class="text-blue-100">Courses</p>
                         </div>
-                        <div class="flex gap-3">
-                            <div class="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                            <div>
-                                <p class="text-slate-900 font-medium">New submissions</p>
-                                <p class="text-slate-500">12 assignments - Yesterday</p>
-                            </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">98%</div>
+                            <p class="text-blue-100">Satisfaction Rate</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Professor Notifications Panel -->
-    <div id="profNotificationsPanel" class="hidden fixed top-16 right-4 w-96 glass-card rounded-2xl border border-slate-200 shadow-2xl z-40 max-h-96 overflow-y-auto fade-in">
-        <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-bold text-slate-900">Notifications</h3>
-                <button onclick="toggleProfNotifications()" class="text-slate-400 hover:text-slate-600">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="text-white font-bold">StudyFlow</span>
+                    </div>
+                    <p class="text-sm">Your complete educational management solution.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="student.html" class="hover:text-white transition-colors">Student Dashboard</a></li>
+                        <li><a href="professor.html" class="hover:text-white transition-colors">Professor Dashboard</a></li>
+                        <li><a href="schedule.html" class="hover:text-white transition-colors">Schedules</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="space-y-3">
-                <!-- Student Absent Alert -->
-                <div class="p-3 bg-red-50 rounded-lg border border-red-200">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600 flex-shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-slate-900">Student At Risk</p>
-                            <p class="text-sm text-slate-600">John Doe - 3 absences (Risk of elimination)</p>
-                            <p class="text-xs text-slate-500 mt-1">Data Structures • 2 hours ago</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- New Assignment Submission -->
-                <div class="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-slate-900">New Submissions</p>
-                            <p class="text-sm text-slate-600">12 students submitted Assignment 2</p>
-                            <p class="text-xs text-slate-500 mt-1">Database Design • 1 day ago</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Session QR Generated -->
-                <div class="p-3 bg-green-50 rounded-lg border border-green-200">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-slate-900">Session Started</p>
-                            <p class="text-sm text-slate-600">QR code generated for Data Structures class</p>
-                            <p class="text-xs text-slate-500 mt-1">Attendance • Today at 10:00 AM</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Low Attendance Alert -->
-                <div class="p-3 bg-amber-50 rounded-lg border border-amber-200">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 flex-shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-slate-900">Class Attendance Alert</p>
-                            <p class="text-sm text-slate-600">Web Dev attendance below 80% threshold</p>
-                            <p class="text-xs text-slate-500 mt-1">Web Development • Yesterday</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-sm">
+                <p>&copy; 2026 StudyFlow. All rights reserved.</p>
             </div>
         </div>
-    </div>
+    </footer>
 
     <script>
-        // Professor Notifications Toggle
-        function toggleProfNotifications() {
-            const panel = document.getElementById('profNotificationsPanel');
-            panel.classList.toggle('hidden');
-        }
-
-        // Close notifications when clicking outside
-        document.addEventListener('click', function(event) {
-            const panel = document.getElementById('profNotificationsPanel');
-            const notifBtn = event.target.closest('button[onclick*="toggleProfNotifications"]');
-            if (!panel.contains(event.target) && !notifBtn) {
-                panel.classList.add('hidden');
-            }
-        });
-
-        // Profile menu functionality
-        function toggleProfileMenu() {
-            const menu = document.getElementById('profileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Close profile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const profileMenu = document.getElementById('profileMenu');
-            const profileBtn = event.target.closest('button[onclick="toggleProfileMenu()"]');
-            if (profileMenu && !profileMenu.contains(event.target) && !profileBtn) {
-                profileMenu.classList.add('hidden');
-            }
-        });
-
-        function openProfileSettings() {
-            document.getElementById('profileMenu').classList.add('hidden');
-            alert('Opening Profile Settings...\n\nThis feature would navigate to a dedicated settings page where you can:\n- Update personal information\n- Change password\n- Update profile picture\n- Manage notifications\n- Department settings');
-        }
-
-        function handleLogout() {
-            document.getElementById('profileMenu').classList.add('hidden');
-            if (confirm('Are you sure you want to logout?')) {
-                alert('Logging out...');
-                window.location.href = 'professor.html';
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
             }
         }
     </script>
